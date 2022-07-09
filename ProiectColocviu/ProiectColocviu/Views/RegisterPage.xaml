@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EJobsMarket.ViewModels"
+             x:Class="EJobsMarket.Views.RegisterPage"
+             x:DataType="viewmodels:RegisterViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:RegisterViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" Margin="20,0">
+            <Entry Placeholder="Username" Text="{Binding Username}"/>
+            <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}"/>
+            <Entry Placeholder="Contact (the format is not important)" Text="{Binding Contact}"/>
+            <Entry Placeholder="Description" Text="{Binding Description}"/>
+            <Picker Title="Experience Type" ItemsSource="{Binding ExperienceTypes}" SelectedIndex="{Binding Experience, Converter={StaticResource IntEnum}}"/>
+            <Button Text="Sign up" Command="{Binding RegisterCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

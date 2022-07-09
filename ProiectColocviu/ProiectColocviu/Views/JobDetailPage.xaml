@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EJobsMarket.ViewModels"
+             x:Class="EJobsMarket.Views.JobDetailPage"
+             x:DataType="viewmodels:JobDetailViewModel">
+
+    <ScrollView>
+        <StackLayout Margin="15, 0" >
+            <Label Text="Title:" Style="{StaticResource DetailTitleLabelStyle}"/>
+            <Label Text="{Binding JobTitle}" Style="{StaticResource DetailLabelStyle}"/>
+            <Label Text="Description:" Style="{StaticResource DetailTitleLabelStyle}"/>
+            <Label Text="{Binding Description}" Style="{StaticResource DetailLabelStyle}"/>
+            <Label Text="Experience Required:" Style="{StaticResource DetailTitleLabelStyle}"/>
+            <Label Text="{Binding ExperienceRequired}" Style="{StaticResource DetailLabelStyle}"/>
+            <Label Text="Job Type:" Style="{StaticResource DetailTitleLabelStyle}"/>
+            <Label Text="{Binding JobType}" Style="{StaticResource DetailLabelStyle}"/>
+            <Label Text="Compensation:" Style="{StaticResource DetailTitleLabelStyle}"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding Compensation, StringFormat='{0}$'}" Style="{StaticResource DetailLabelStyle}"/>
+                <Label Text="{Binding CompensationType}" Style="{StaticResource DetailLabelStyle}"/>
+            </StackLayout>
+            <Label Text="Is the job remote?" Style="{StaticResource DetailTitleLabelStyle}"/>
+            <Label Text="{Binding RemoteString}" Style="{StaticResource DetailLabelStyle}"/>
+            <Label Text="The job is currently taken by:" Style="{StaticResource DetailTitleLabelStyle}"/>
+            <Label Text="{Binding Taker}" Style="{StaticResource DetailLabelStyle}"/>
+            <Button Text="Take Job" Command="{Binding TakeJobCommand}" IsVisible="{Binding TakeBtnVisibility}"/>
+            <Button Text="Cancel Job" Command="{Binding CancelJobCommand}" IsVisible="{Binding CancelJobBtnVisibility}"/>
+            <Button Text="Cancel Order" Command="{Binding CancelOrderCommand}" IsVisible="{Binding CancelOrderBtnVisibility}"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

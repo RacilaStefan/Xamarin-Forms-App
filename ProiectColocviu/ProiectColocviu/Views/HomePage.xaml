@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EJobsMarket.Views.HomePage"
+             xmlns:viewmodels="clr-namespace:EJobsMarket.ViewModels"
+             xmlns:controls="clr-namespace:EJobsMarket.Controls"
+             x:DataType="viewmodels:HomeViewModel"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddJobCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="HeaderLabelStyle">
+                <Setter Property="Margin" Value="20, 0, 0, 0"/>
+                <Setter Property="FontSize" Value="25"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <RefreshView x:DataType="viewmodels:HomeViewModel" Command="{Binding LoadJobsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <ScrollView>
+            <StackLayout Margin="0, 20">
+                <Label Text="Recomended Jobs" Style="{StaticResource HeaderLabelStyle}"/>
+                <FlexLayout
+                    Direction="Column"
+                    BindableLayout.ItemsSource="{Binding RecommendedJobs}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <controls:JobCard/>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+                <Label Text="Opened Jobs" Style="{StaticResource HeaderLabelStyle}"/>
+                <FlexLayout
+                    Direction="Column"
+                    BindableLayout.ItemsSource="{Binding OpenJobs}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <controls:JobCard/>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+                <Label Text="Opened Orders" Style="{StaticResource HeaderLabelStyle}"/>
+                <FlexLayout
+                    Direction="Column"
+                    BindableLayout.ItemsSource="{Binding OpenOrders}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <controls:JobCard/>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </StackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

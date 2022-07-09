@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EJobsMarket.ViewModels"
+             x:Class="EJobsMarket.Views.UserProfilePage"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <viewmodels:UserProfileViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout Margin="15, 0">
+            <Label Text="Username:" Style="{StaticResource DetailTitleLabelStyle}"/>
+            <Label Text="{Binding Username}" Style="{StaticResource DetailLabelStyle}"/>
+            <Label Text="Contact:" Style="{StaticResource DetailTitleLabelStyle}"/>
+            <Label Text="{Binding Contact}" Style="{StaticResource DetailLabelStyle}"/>
+            <Label Text="Description:" Style="{StaticResource DetailTitleLabelStyle}"/>
+            <Label Text="{Binding Description}" Style="{StaticResource DetailLabelStyle}"/>
+            <Label Text="Experience:" Style="{StaticResource DetailTitleLabelStyle}"/>
+            <Label Text="{Binding Experience}" Style="{StaticResource DetailLabelStyle}"/>
+            <Button Text="Delete Account" Command="{Binding DeleteUserCommand}"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

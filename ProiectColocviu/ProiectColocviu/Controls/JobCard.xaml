@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            xmlns:model="clr-namespace:EJobsMarket.Models"
+            xmlns:viewmodels="clr-namespace:EJobsMarket.ViewModels"
+            x:Class="EJobsMarket.Controls.JobCard"
+            x:DataType="model:Job"
+       Margin="15"
+       Padding="20, 10, 20, 15"
+       CornerRadius="15"
+       BackgroundColor="{StaticResource FrameBackgroundColor}"
+       >
+    <Frame.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="10, 0, 0, 0"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+    </Frame.Resources>
+    <StackLayout>
+        <AbsoluteLayout>
+            <Label Text="{Binding Id, StringFormat='{0}. '}" Margin="0,8,0,0" FontSize="20" FontAttributes="Bold,Italic"/>
+            <Label Text="{Binding Title}" FontSize="28" Margin="30, 0, 0, 0" FontAttributes="Italic"/>
+        </AbsoluteLayout>
+        <Label Text="{Binding Description}"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Compensation: "/>
+            <Label Text="{Binding Compensation, StringFormat='{0}$ /'}" FontAttributes="Bold" Margin="0"/>
+            <Label Text="{Binding CompensationType}" Margin="0" FontAttributes="Bold"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Experience Required: "/>
+            <Label Text="{Binding ExperienceRequired}" FontAttributes="Bold" Margin="0"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Category: "/>
+            <Label Text="{Binding Type}" FontAttributes="Bold" Margin="0"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Remote: "/>
+            <Label Text="{Binding Remote}" FontAttributes="Bold" Margin="0"/>
+        </StackLayout>
+        <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer 
+                    NumberOfTapsRequired="1"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:JobContainerViewModel}}, Path=JobTapped}"		
+                    CommandParameter="{Binding .}">
+            </TapGestureRecognizer>
+        </StackLayout.GestureRecognizers>
+    </StackLayout>
+</Frame>

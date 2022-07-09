@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EJobsMarket.ViewModels"
+             x:Class="EJobsMarket.Views.NewJobPage">
+
+    <StackLayout Spacing="3" Padding="15" x:DataType="viewmodels:NewJobViewModel">
+        <Entry Placeholder="Job Title" Text="{Binding JobTitle}"/>
+        <Editor Placeholder="Description" Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+        <Picker Title="Experience Required" ItemsSource="{Binding ExperienceTypesList}" SelectedIndex="{Binding ExperienceRequired, Converter={StaticResource IntEnum}}"/>
+        <Picker Title="Job Type" ItemsSource="{Binding JobTypesList}" SelectedIndex="{Binding JobType, Converter={StaticResource IntEnum}}"/>
+        <Picker Title="Compensation Type" ItemsSource="{Binding CompensationTypesList}" SelectedIndex="{Binding CompensationType, Converter={StaticResource IntEnum}}"/>
+        <Label Text="Compensation Amount:" FontSize="Medium"/>
+        <StackLayout Orientation="Horizontal">
+            <Entry Text="{Binding Compensation}" Keyboard="Numeric" Margin="0,0,10,0" WidthRequest="100"/>
+            <Label Text= "{Binding CompensationMeasure}" HorizontalOptions="FillAndExpand" FontSize="Medium" Margin="-10,15,0,0"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Is the job remote?" FontSize="Medium"/>
+            <CheckBox IsChecked="{Binding Remote}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Margin="0, 15">
+            <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+            <Button Text="Add" Command="{Binding AddJobCommand}" HorizontalOptions="FillAndExpand"></Button>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

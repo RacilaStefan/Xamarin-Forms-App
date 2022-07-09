@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EJobsMarket.Views.LoadingPage"
+             Shell.NavBarIsVisible="False">
+    <StackLayout>
+        <Label 
+            Text="E-Jobs Market" 
+            FontSize="50" 
+            HorizontalOptions="Center"
+            FontAttributes="Bold,Italic" 
+            Margin="0, 250, 0, 300"
+            />
+        <Label 
+            Text="Loading..." 
+            FontSize="30" 
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            TextColor="{StaticResource Daffodil}"
+            />
+    </StackLayout>
+</ContentPage>
